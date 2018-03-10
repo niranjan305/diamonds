@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 import seaborn as sns
 from sklearn.preprocessing import scale
-import sklearn.linear_model as lm
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn import linear_model
+from sklearn.metrics import mean_squared_error, r2_score, accuracy_score
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
@@ -30,12 +30,17 @@ data['clarity']=data['clarity'].cat.codes
 X = pd.DataFrame(data,columns=['carat','color','cut','clarity','depth','table','x','y','z'])
 y = pd.DataFrame(data,columns=['price'])
 
-# Dividing data for testing and validation 
-X_test = X[:30000]
+# Dividing data for training and validation 
+X_train = X[:30000]
 X_val = X[30000:]
 
-y_test = y[:30000]
+y_train = y[:30000]
 y_val = y[30000:]
 
 # Plotting all the quantitative predictors against each other
-sns.pairplot(data[['carat','color','cut','clarity','depth','table','price']]);
+#sns.pairplot(data[['carat','color','cut','clarity','depth','table','price']]);
+
+lm = linear_model.LinearRegression()
+model = lm.fit(X_train,y_train)
+predict = lm.predict(X_train)
+#lm.score(X_train,predict)
