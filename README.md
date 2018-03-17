@@ -26,4 +26,4 @@ This classic dataset contains the prices and other attributes of almost 54,000 d
 
 **table** width of top of diamond relative to widest point (43--95)
 
-#### Please refer to the ipython notebook (diamonds.ipynb file) for the analysis
+#### Please refer to the ipython notebook (diamond_analysis.ipynb file) for the analysis
